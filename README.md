@@ -14,18 +14,71 @@
 
 <div align="center">
   <table>
+    <!-- Fila 1 -->
     <tr>
       <td align="center">
-        <img src="screenshots/pantalla_principal.png" width="220"/><br>
-        <b>Principal</b>
+        <img src="screenshots/Inicio de sesion.png" width="200"/><br>
+        <b>Inicio de sesión</b>
       </td>
       <td align="center">
-        <img src="screenshots/chat_gemini.png" width="220"/><br>
-        <b>Chat IA</b>
+        <img src="screenshots/Pantalla-principal1.png" width="200"/><br>
+        <b>Principal 1</b>
       </td>
       <td align="center">
-        <img src="screenshots/reporte.png" width="220"/><br>
-        <b>Reportes PDF</b>
+        <img src="screenshots/Pantalla-principal2.png" width="200"/><br>
+        <b>Principal 2</b>
+      </td>
+    </tr>
+    <!-- Fila 2 -->
+    <tr>
+      <td align="center">
+        <img src="screenshots/pantalla-comida1.jpg" width="200"/><br>
+        <b>Comida 1</b>
+      </td>
+      <td align="center">
+        <img src="screenshots/pantalla-comida2.jpg" width="200"/><br>
+        <b>Comida 2</b>
+      </td>
+      <td align="center">
+        <img src="screenshots/Pantalla-glucosa1.jpg" width="200"/><br>
+        <b>Glucosa 1</b>
+      </td>
+    </tr>
+    <!-- Fila 3 -->
+    <tr>
+      <td align="center">
+        <img src="screenshots/Pantalla-glucosa2.jpg" width="200"/><br>
+        <b>Glucosa 2</b>
+      </td>
+      <td align="center">
+        <img src="screenshots/Pantalla-medicamentos1.png" width="200"/><br>
+        <b>Medicamentos 1</b>
+      </td>
+      <td align="center">
+        <img src="screenshots/Pantalla-medicamentos2.png" width="200"/><br>
+        <b>Medicamentos 2</b>
+      </td>
+    </tr>
+    <!-- Fila 4 -->
+    <tr>
+      <td align="center">
+        <img src="screenshots/Pantalla-configuraciones1.jpg" width="200"/><br>
+        <b>Configuraciones 1</b>
+      </td>
+      <td align="center">
+        <img src="screenshots/Pantalla-configuraciones2.jpg" width="200"/><br>
+        <b>Configuraciones 2</b>
+      </td>
+      <td align="center">
+        <img src="screenshots/Pantalla-configuraciones3.jpg" width="200"/><br>
+        <b>Configuraciones 3</b>
+      </td>
+    </tr>
+    <!-- Fila 5 (Última imagen centrada o sola) -->
+    <tr>
+      <td align="center" colspan="3">
+        <img src="screenshots/Respaldo de seguridad.png" width="200"/><br>
+        <b>Respaldo de seguridad</b>
       </td>
     </tr>
   </table>
