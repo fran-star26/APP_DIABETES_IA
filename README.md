@@ -56,7 +56,7 @@ Este proyecto está dividido en dos capas principales:
 ```bash
 git clone [https://github.com/fran-star26/APP_DIABETES_IA.git](https://github.com/fran-star26/APP_DIABETES_IA.git)
 cd APP_DIABETES_IA
-
+```
 2. Configurar Variables de Entorno (Crucial)
 Por seguridad, las claves de las APIs no están incluidas en este repositorio. Debes configurar tus propias credenciales localmente:
 
