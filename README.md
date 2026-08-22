@@ -1,251 +1,107 @@
-# GlucosaSmart IA - Aplicación de Control de Diabetes
+# 🩸 GlucosaSmart IA 
 
-## Descripción
+<div align="center">
+  <img alt="Android" src="https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white" />
+  <img alt="Kotlin" src="https://img.shields.io/badge/Kotlin-0095D5?&style=for-the-badge&logo=kotlin&logoColor=white" />
+  <img alt="FastAPI" src="https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi" />
+  <img alt="Gemini AI" src="https://img.shields.io/badge/Gemini_AI-4285F4?style=for-the-badge&logo=google&logoColor=white" />
+  <img alt="SQLite" src="https://img.shields.io/badge/SQLite-07405E?style=for-the-badge&logo=sqlite&logoColor=white" />
+</div>
 
-GlucosaSmart IA es una aplicación móvil desarrollada en Android que ayuda a los pacientes con diabetes a monitorear y controlar sus niveles de glucosa, registrar comidas, y generar reportes profesionales para compartir con sus médicos.
+<br>
 
-## Características Principales
-
-### 📊 Monitoreo de Glucosa
-- Registro de lecturas de glucosa
-- Clasificación automática (Normal, Alto, Bajo, Crítico)
-- Notas y observaciones
-- Historial completo
-
-### 🍽️ Registro de Comidas
-- Tipos de comida (Desayuno, Almuerzo, Cena, Snack)
-- Descripciones detalladas
-- Horarios de registro
-
-### 📞 Contactos de Emergencia
-- Gestión de contactos médicos
-- Números de emergencia
-- Acceso rápido
-
-### 📄 Generación de Reportes
-- **Reportes en PDF**: Formato profesional con iText7
-- **Reportes en HTML**: Compatible con Word y navegadores
-- Análisis automático de datos
-- Recomendaciones personalizadas
-- Compartir por email, WhatsApp, etc.
-
-## Configuración del Proyecto
-
-### Requisitos
-- Android Studio Hedgehog | 2023.1.1 o superior
-- Android SDK 26+ (API 26)
-- Kotlin 1.9.0+
-- Gradle 8.0+
-
-### Instalación
-
-1. **Clonar el repositorio**
-   ```bash
-   git clone [URL_DEL_REPOSITORIO]
-   cd Proyecto_Diabetes
-   ```
-
-2. **Abrir en Android Studio**
-   - Abrir Android Studio
-   - Seleccionar "Open an existing project"
-   - Navegar a la carpeta del proyecto y seleccionarla
-
-3. **Sincronizar dependencias**
-   - Esperar a que Gradle sincronice automáticamente
-   - O hacer clic en "Sync Now" si aparece la notificación
-
-4. **Configurar dispositivo/emulador**
-   - Conectar un dispositivo Android (API 26+)
-   - O crear un emulador con API 26+
-
-### Dependencias Principales
-
-```kotlin
-// Compose UI
-implementation(platform("androidx.compose:compose-bom:2024.02.00"))
-implementation("androidx.compose.ui:ui")
-implementation("androidx.compose.material3:material3")
-
-// PDF Generation
-implementation("com.itextpdf:itext7-core:7.2.5")
-implementation("com.itextpdf:kernel:7.2.5")
-implementation("com.itextpdf:io:7.2.5")
-implementation("com.itextpdf:layout:7.2.5")
-
-// Charts
-implementation("com.patrykandpatrick.vico:compose:1.13.1")
-```
-
-## Uso de la Aplicación
-
-### Generación de Reportes
-
-La aplicación incluye un sistema completo de generación de reportes:
-
-#### 1. Reportes PDF
-- Formato profesional
-- Tablas bien estructuradas
-- Colores y tipografías
-- Listo para imprimir
-
-#### 2. Reportes HTML
-- Compatible con Microsoft Word
-- Se puede abrir en navegadores
-- Formato editable
-- Sin dependencias adicionales
-
-### Cómo Probar los Reportes
-
-1. **Ejecutar la aplicación**
-   ```bash
-   ./gradlew assembleDebug
-   ```
-
-2. **Abrir la actividad de prueba**
-   - En el dispositivo/emulador, buscar "Prueba de Reportes"
-   - O usar adb:
-   ```bash
-   adb shell am start -n com.proyectoing.glocosasmarai/.TestReportActivity
-   ```
-
-3. **Generar reporte**
-   - Seleccionar formato (PDF o HTML)
-   - Hacer clic en "Generar Reporte"
-   - Esperar a que se complete
-   - Hacer clic en "Compartir" para ver el resultado
-
-### Estructura de los Reportes
-
-Los reportes incluyen:
-
-1. **Información del Paciente**
-   - Nombre, edad, tipo de diabetes
-   - Período del reporte
-   - Fecha de generación
-
-2. **Resumen Ejecutivo**
-   - Total de lecturas de glucosa
-   - Promedio de glucosa
-   - Distribución de lecturas (altas, bajas, normales)
-   - Total de comidas registradas
-
-3. **Registros Detallados**
-   - Tabla completa de lecturas de glucosa
-   - Registros de comidas
-   - Fechas, horas y valores
-
-4. **Análisis de Advertencias**
-   - Alertas de emergencia (>250 mg/dL)
-   - Advertencias (<70 mg/dL)
-   - Total de alertas
-
-5. **Contactos de Emergencia**
-   - Lista de contactos configurados
-
-6. **Recomendaciones**
-   - Basadas en el análisis de datos
-   - Consejos personalizados
-   - Recomendaciones generales
-
-## Configuración de Permisos
-
-La aplicación requiere los siguientes permisos:
-
-```xml
-<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-```
-
-### FileProvider
-
-El FileProvider está configurado para compartir archivos:
-
-```xml
-<provider
-    android:name="androidx.core.content.FileProvider"
-    android:authorities="${applicationId}.fileprovider"
-    android:exported="false"
-    android:grantUriPermissions="true">
-    <meta-data
-        android:name="android.support.FILE_PROVIDER_PATHS"
-        android:resource="@xml/file_paths" />
-</provider>
-```
-
-## Solución de Problemas
-
-### Error de Compilación con iText7
-Si aparecen errores de compilación relacionados con iText7:
-
-1. **Verificar minSdk**
-   - Asegurar que `minSdk = 26` en `app/build.gradle.kts`
-
-2. **Sincronizar dependencias**
-   ```bash
-   ./gradlew clean build
-   ```
-
-3. **Invalidar caché**
-   - En Android Studio: File → Invalidate Caches and Restart
-
-### Error de Permisos
-Si no se pueden generar reportes:
-
-1. **Verificar permisos en tiempo de ejecución**
-   - La app solicitará permisos automáticamente
-
-2. **Verificar FileProvider**
-   - Asegurar que `file_paths.xml` esté configurado
-
-### Error al Compartir
-Si no se puede compartir el reporte:
-
-1. **Verificar apps instaladas**
-   - Email, WhatsApp, Drive, etc.
-
-2. **Verificar permisos**
-   - Almacenamiento y compartición
-
-## Estructura del Proyecto
-
-```
-app/
-├── src/main/
-│   ├── java/com/proyectoing/glocosasmarai/
-│   │   ├── services/
-│   │   │   ├── ReportGeneratorService.kt      # Generación PDF
-│   │   │   ├── WordReportGeneratorService.kt  # Generación HTML
-│   │   │   └── UnifiedReportGeneratorService.kt # Servicio unificado
-│   │   ├── ui/components/
-│   │   │   └── ReportGeneratorExample.kt     # Componente UI
-│   │   ├── MainActivity.kt
-│   │   └── TestReportActivity.kt              # Actividad de prueba
-│   ├── res/
-│   │   └── xml/
-│   │       └── file_paths.xml                 # Configuración FileProvider
-│   └── AndroidManifest.xml
-├── build.gradle.kts
-└── proguard-rules.pro
-```
-
-## Contribuir
-
-1. Fork el proyecto
-2. Crear una rama para tu feature (`git checkout -b feature/AmazingFeature`)
-3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
-4. Push a la rama (`git push origin feature/AmazingFeature`)
-5. Abrir un Pull Request
-
-## Licencia
-
-Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más detalles.
-
-## Contacto
-
-Para preguntas o soporte:
-- Email: [tu-email@ejemplo.com]
-- GitHub Issues: [URL_DEL_REPOSITORIO]/issues
+**GlucosaSmart IA** es una aplicación móvil nativa desarrollada para Android que ayuda a los pacientes con diabetes a tomar el control de su salud. Combina un registro detallado de métricas médicas con el poder de un asistente virtual impulsado por inteligencia artificial (Google Gemini), capaz de analizar información nutricional y ofrecer recomendaciones personalizadas.
 
 ---
 
-**GlucosaSmart IA** - Control inteligente de diabetes 📱💙 
+## ✨ Características Principales
+
+### 🤖 Asistente Virtual Inteligente
+- Chatbot integrado y alimentado por **Google Gemini 1.5 Flash**.
+- Análisis nutricional instantáneo a partir de descripciones de comida (cálculo aproximado de calorías, carbohidratos y azúcares).
+- Recomendaciones de emergencia (ej. protocolo de la regla del 15 para hipoglucemia).
+
+### 📊 Monitoreo de Glucosa y Comidas
+- Registro diario de lecturas de glucosa con clasificación visual de riesgo (Normal, Alto, Bajo, Crítico).
+- Clasificación de comidas (Desayuno, Almuerzo, Cena, Snack).
+- Historial completo almacenado de forma segura y local en el dispositivo.
+
+### 📄 Generación de Reportes Médicos
+- Exportación automática a formatos **PDF** y **HTML** utilizando *iText7*.
+- Resúmenes ejecutivos con promedios, alertas generadas y estadísticas de distribución.
+- Interfaz integrada para compartir el reporte rápidamente por correo o WhatsApp con el médico tratante.
+
+### 📞 Prevención y Emergencias
+- Registro de contactos médicos y números de emergencia accesibles a un toque.
+
+---
+
+## 🛠️ Tecnologías y Arquitectura
+
+Este proyecto está dividido en dos capas principales:
+
+1. **Frontend (Android/Kotlin):** Construido con **Jetpack Compose** para una UI reactiva y moderna, utilizando `Room` para persistencia de datos local, alarmas programadas con `WorkManager`, y `Coil` para manejo de imágenes.
+2. **Backend (Python/FastAPI):** Una API RESTful ligera que funciona como puente entre la aplicación móvil y los modelos de lenguaje de Google, garantizando respuestas rápidas y estructuradas.
+
+---
+
+## 🚀 Configuración e Instalación
+
+### Requisitos Previos
+- **Android Studio** (Hedgehog 2023.1.1 o superior).
+- **SDK de Android:** API 26+ (Android 8.0 Oreo).
+- Cuenta de **Google Cloud / AI Studio** para obtener una API Key de Gemini.
+
+### 1. Clonar el repositorio
+```bash
+git clone [https://github.com/fran-star26/APP_DIABETES_IA.git](https://github.com/fran-star26/APP_DIABETES_IA.git)
+cd APP_DIABETES_IA
+```
+### 2. Configurar Variables de Entorno (Crucial)
+Por seguridad, las claves de las APIs no están incluidas en este repositorio. Debes configurar tus propias credenciales localmente:
+
+En Android Studio:
+Abre el archivo **local.properties** (créalo en la raíz si no existe) y agrega la ruta a tu servidor backend local:
+```bash
+BACKEND_URL="http://TU_IP_LOCAL:8000"
+```
+En el Backend (FastAPI):
+Crea un archivo **.env** en la raíz de tu servidor Python e inserta tu clave de Gemini:
+```bash
+GOOGLE_API_KEY="AIzaSyTuClaveDeGoogleAqui"
+```
+
+### 3. Ejecutar el Proyecto
+- Sincroniza Gradle en Android Studio (**Sync Now**).
+- Selecciona tu emulador o dispositivo físico y presiona Run (**Shift + F10**).
+- Asegúrate de levantar el servidor de FastAPI en tu terminal: **uvicorn main:app --host 0.0.0.0 --port 8000**.
+
+## 🏗️ Estructura del Proyecto (Android)
+```bash
+app/src/main/java/com/proyectoing/glocosasmarai/
+├── chatbot/          # Lógica de integración con la IA y estructuración de JSONs
+├── config/           # Lectura de variables seguras desde BuildConfig
+├── database/         # Entidades de Room y DAOs
+├── models/           # Clases de datos (Glucosa, Comida, Perfil, etc.)
+├── services/         # Generación de PDFs (iText7), Autenticación, Drive Backup y red (OkHttp)
+├── ui/               # Pantallas construidas 100% en Jetpack Compose
+├── workers/          # Tareas en segundo plano (Recordatorios de medicación y comidas)
+└── MainActivity.kt   # Punto de entrada de la app
+```
+
+## 🔧 Solución de Problemas Frecuentes
+- Error 500 al consultar a la IA: Verifica que tu archivo **.env** exista en el backend, que la API Key sea válida y que tu proyecto de Google Cloud no tenga restricciones de cuota o facturación.
+- La app no se conecta al servidor: Si pruebas en un dispositivo físico, asegúrate de que tu celular y tu computadora estén en la misma red Wi-Fi y que hayas puesto la IPv4 correcta en **local.properties**.
+- Error de compilación con iText7: Asegúrate de que tu **minSdk** esté fijado en 26 dentro de **app/build.gradle.kts** y limpia el proyecto (**Build -> Clean Project**).
+
+## 🤝 Contribuciones
+Este proyecto nació como un trabajo de tesis de ingeniería. ¡Las sugerencias y mejoras son bienvenidas!
+
+1. Haz un Fork del repositorio.
+2. Crea una rama para tu función (**git checkout -b feature/NuevaFuncion**).
+3. Sube tus cambios (**git commit -m 'Añadir NuevaFuncion'**).
+4. Haz push a tu rama (**git push origin feature/NuevaFuncion**).
+5. Abre un Pull Request.
+
+## 📜 Licencia
+Este proyecto está bajo la Licencia **MIT**. Consulta el archivo **LICENSE** para más detalles.
