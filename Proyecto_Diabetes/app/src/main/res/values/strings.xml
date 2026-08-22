@@ -1,0 +1,77 @@
+<resources>
+    <string name="app_name">GlucosaSmart IA</string>
+    
+    <!-- Pantalla principal -->
+    <string name="welcome_message">¡Hola! Soy tu asistente de diabetes</string>
+    <string name="add_glucose">Agregar Glucosa</string>
+    <string name="add_food">Agregar Comida</string>
+    <string name="view_history">Ver Historial</string>
+    <string name="predictions">Predicciones</string>
+    <string name="settings">Configuración</string>
+    
+    <!-- Registro de glucosa -->
+    <string name="glucose_title">Registrar Glucosa</string>
+    <string name="take_photo">Tomar Foto</string>
+    <string name="manual_entry">Entrada Manual</string>
+    <string name="glucose_value">Valor de Glucosa (mg/dL)</string>
+    <string name="save_glucose">Guardar</string>
+    <string name="cancel">Cancelar</string>
+    
+    <!-- Registro de comida -->
+    <string name="food_title">Registrar Comida</string>
+    <string name="speak_food">Hablar sobre la comida</string>
+    <string name="food_description">Describe lo que comiste</string>
+    <string name="save_food">Guardar Comida</string>
+    <string name="carbs_calculated">Carbohidratos calculados: %1$d g</string>
+    
+    <!-- Predicciones -->
+    <string name="prediction_title">Predicciones de Glucosa</string>
+    <string name="prediction_warning">⚠️ Advertencia</string>
+    <string name="prediction_ok">✅ Todo bien</string>
+    <string name="prediction_high">📈 Glucosa alta en %1$d horas</string>
+    <string name="prediction_low">📉 Glucosa baja en %1$d horas</string>
+    <string name="take_action">Toma acción</string>
+    
+    <!-- Alertas -->
+    <string name="emergency_alert">¡ALERTA DE EMERGENCIA!</string>
+    <string name="low_glucose_alert">Glucosa muy baja: %1$d mg/dL</string>
+    <string name="high_glucose_alert">Glucosa muy alta: %1$d mg/dL</string>
+    <string name="contact_family">Contactando familia...</string>
+    
+    <!-- Configuración -->
+    <string name="settings_title">Configuración</string>
+    <string name="emergency_contact">Contacto de Emergencia</string>
+    <string name="phone_number">Número de teléfono</string>
+    <string name="save_settings">Guardar</string>
+    <string name="notifications">Notificaciones</string>
+    <string name="enable_notifications">Activar notificaciones</string>
+    
+    <!-- Mensajes -->
+    <string name="data_saved">Datos guardados correctamente</string>
+    <string name="error_saving">Error al guardar datos</string>
+    <string name="permission_required">Se requieren permisos</string>
+    <string name="camera_permission">Permiso de cámara requerido</string>
+    <string name="microphone_permission">Permiso de micrófono requerido</string>
+    
+    <!-- Acciones -->
+    <string name="drink_juice">Tómate un jugo</string>
+    <string name="take_insulin">Toma tu insulina</string>
+    <string name="check_glucose">Revisa tu glucosa</string>
+    <string name="call_doctor">Llama al médico</string>
+    
+    <!-- Reportes PDF -->
+    <string name="monthly_reports">Reportes Mensuales</string>
+    <string name="generate_pdf_report">Generar Reporte PDF</string>
+    <string name="share_report">Compartir Reporte</string>
+    <string name="report_generated">Reporte Generado</string>
+    <string name="report_success_message">El reporte PDF mensual se ha generado exitosamente. Puedes compartirlo o descargarlo.</string>
+    <string name="generating_report">Generando...</string>
+    <string name="patient_profile">Perfil del Paciente</string>
+    <string name="edit_profile">Editar Perfil</string>
+    <string name="patient_name">Nombre completo</string>
+    <string name="patient_age">Edad</string>
+    <string name="diabetes_type">Tipo de Diabetes</string>
+    <string name="no_patient_info">No hay información del paciente configurada</string>
+    <string name="report_description">Genera un reporte PDF mensual con todos tus datos de glucosa, comidas y advertencias.</string>
+    
+</resources>

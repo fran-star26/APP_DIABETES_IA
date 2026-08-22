@@ -1,0 +1,207 @@
+package com.proyectoing.glocosasmarai.ui.components
+
+import android.content.Context
+import androidx.compose.foundation.layout.*
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.proyectoing.glocosasmarai.services.ReportFormat
+import com.proyectoing.glocosasmarai.services.UnifiedReportGeneratorService
+import com.proyectoing.glocosasmarai.models.GlucoseEntry
+import com.proyectoing.glocosasmarai.models.FoodEntry
+import com.proyectoing.glocosasmarai.models.EmergencyContact
+import java.io.File
+
+@Composable
+fun ReportGeneratorExample(
+    glucoseEntries: List<GlucoseEntry>,
+    foodEntries: List<FoodEntry>,
+    emergencyContacts: List<EmergencyContact>,
+    patientName: String = "Usuario",
+    patientAge: Int = 0,
+    patientDiabetesType: String = "Tipo 2"
+) {
+    val context = LocalContext.current
+    val reportGenerator = remember { UnifiedReportGeneratorService(context) }
+    var selectedFormat by remember { mutableStateOf(ReportFormat.PDF) }
+    var isGenerating by remember { mutableStateOf(false) }
+    var showSuccessDialog by remember { mutableStateOf(false) }
+    var generatedFile by remember { mutableStateOf<File?>(null) }
+    
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text(
+            text = "Generar Reporte Mensual",
+            fontSize = 20.sp,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.padding(bottom = 16.dp)
+        )
+        
+        // Selector de formato
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceEvenly
+        ) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                RadioButton(
+                    selected = selectedFormat == ReportFormat.PDF,
+                    onClick = { selectedFormat = ReportFormat.PDF }
+                )
+                Text(
+                    text = "PDF",
+                    modifier = Modifier.padding(start = 8.dp)
+                )
+            }
+            
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                RadioButton(
+                    selected = selectedFormat == ReportFormat.WORD,
+                    onClick = { selectedFormat = ReportFormat.WORD }
+                )
+                Text(
+                    text = "HTML",
+                    modifier = Modifier.padding(start = 8.dp)
+                )
+            }
+        }
+        
+        Spacer(modifier = Modifier.height(24.dp))
+        
+        // Botón para generar reporte
+        Button(
+            onClick = {
+                isGenerating = true
+                generateReport(
+                    context = context,
+                    reportGenerator = reportGenerator,
+                    format = selectedFormat,
+                    glucoseEntries = glucoseEntries,
+                    foodEntries = foodEntries,
+                    emergencyContacts = emergencyContacts,
+                    patientName = patientName,
+                    patientAge = patientAge,
+                    patientDiabetesType = patientDiabetesType,
+                    onSuccess = { file ->
+                        generatedFile = file
+                        isGenerating = false
+                        showSuccessDialog = true
+                    },
+                    onError = {
+                        isGenerating = false
+                    }
+                )
+            },
+            enabled = !isGenerating,
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            if (isGenerating) {
+                CircularProgressIndicator(
+                    modifier = Modifier.size(20.dp),
+                    color = MaterialTheme.colorScheme.onPrimary
+                )
+                Spacer(modifier = Modifier.width(8.dp))
+                Text("Generando...")
+            } else {
+                Text("Generar Reporte ${selectedFormat.name}")
+            }
+        }
+        
+        Spacer(modifier = Modifier.height(16.dp))
+        
+        // Información del reporte
+        Card(
+            modifier = Modifier.fillMaxWidth(),
+            elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+        ) {
+            Column(
+                modifier = Modifier.padding(16.dp)
+            ) {
+                Text(
+                    text = "Información del Reporte",
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier.padding(bottom = 8.dp)
+                )
+                
+                Text("📊 Total de lecturas de glucosa: ${glucoseEntries.size}")
+                Text("🍽️ Total de comidas registradas: ${foodEntries.size}")
+                Text("📞 Contactos de emergencia: ${emergencyContacts.size}")
+                Text("📅 Período: ${getCurrentMonthYear()}")
+                Text("📄 Formato: ${selectedFormat.name}")
+            }
+        }
+    }
+    
+    // Diálogo de éxito
+    if (showSuccessDialog) {
+        AlertDialog(
+            onDismissRequest = { showSuccessDialog = false },
+            title = { Text("Reporte Generado") },
+            text = { 
+                Text("El reporte se ha generado exitosamente en formato ${selectedFormat.name}.")
+            },
+            confirmButton = {
+                Button(
+                    onClick = {
+                        generatedFile?.let { file ->
+                            reportGenerator.shareReport(file, selectedFormat)
+                        }
+                        showSuccessDialog = false
+                    }
+                ) {
+                    Text("Compartir")
+                }
+            },
+            dismissButton = {
+                TextButton(
+                    onClick = { showSuccessDialog = false }
+                ) {
+                    Text("Cerrar")
+                }
+            }
+        )
+    }
+}
+
+private fun generateReport(
+    context: Context,
+    reportGenerator: UnifiedReportGeneratorService,
+    format: ReportFormat,
+    glucoseEntries: List<GlucoseEntry>,
+    foodEntries: List<FoodEntry>,
+    emergencyContacts: List<EmergencyContact>,
+    patientName: String,
+    patientAge: Int,
+    patientDiabetesType: String,
+    onSuccess: (File) -> Unit,
+    onError: () -> Unit
+) {
+    try {
+        val file = reportGenerator.generateMonthlyReport(
+            format = format,
+            glucoseEntries = glucoseEntries,
+            foodEntries = foodEntries,
+            emergencyContacts = emergencyContacts,
+            patientName = patientName,
+            patientAge = patientAge,
+            patientDiabetesType = patientDiabetesType
+        )
+        onSuccess(file)
+    } catch (e: Exception) {
+        e.printStackTrace()
+        onError()
+    }
+}
+
+private fun getCurrentMonthYear(): String {
+    val dateFormat = java.text.SimpleDateFormat("MMMM yyyy", java.util.Locale("es", "ES"))
+    return dateFormat.format(java.util.Date())
+}

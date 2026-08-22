@@ -1,0 +1,133 @@
+package com.proyectoing.glocosasmarai.examples
+
+import com.proyectoing.glocosasmarai.models.*
+import com.proyectoing.glocosasmarai.services.ChatbotJsonService
+
+/**
+ * Ejemplo de uso del servicio de compresión JSON del chatbot
+ */
+class ChatbotJsonExample {
+    
+    private val chatbotService = ChatbotJsonService(context)
+    
+    /**
+     * Ejemplo de compresión de conversación a JSON de entrada
+     */
+    fun exampleCompressToInputJson(): String {
+        // Simular una conversación existente
+        val chatMessages = listOf(
+            ChatMessage(
+                text = "Hola",
+                isUser = true,
+                timestamp = 1704067100000
+            ),
+            ChatMessage(
+                text = "¡Hola! ¿Cómo estás hoy?",
+                isUser = false,
+                timestamp = 1704067150000
+            )
+        )
+        
+        // Comprimir a JSON de entrada
+        return chatbotService.compressToInputJson(
+            userId = "user_12345",
+            userMessage = "¿Qué puedo comer si mi glucosa está en 180?",
+            chatMessages = chatMessages,
+            glucoseLevel = 180,
+            lastMeal = "Hace 3 horas",
+            medicationTaken = true
+        )
+    }
+    
+    /**
+     * Ejemplo de respuesta simulada del chatbot
+     */
+    fun exampleSimulatedResponse(): String {
+        return chatbotService.generateSimulatedResponse(
+            userMessage = "¿Qué puedo comer si mi glucosa está en 180?",
+            glucoseLevel = 180
+        )
+    }
+    
+    /**
+     * Ejemplo de parsing de respuesta del chatbot
+     */
+    fun exampleParseResponse(): ChatbotOutput {
+        val jsonResponse = exampleSimulatedResponse()
+        return chatbotService.parseChatbotResponse(jsonResponse)
+    }
+    
+    /**
+     * Ejemplo completo de flujo de conversación
+     */
+    fun exampleCompleteFlow(): String {
+        // 1. Crear conversación inicial
+        val initialMessages = listOf(
+            ChatMessage(
+                text = "Hola, tengo diabetes tipo 2",
+                isUser = true,
+                timestamp = System.currentTimeMillis() - 300000
+            ),
+            ChatMessage(
+                text = "¡Hola! Me alegra conocerte. ¿Cómo puedo ayudarte hoy?",
+                isUser = false,
+                timestamp = System.currentTimeMillis() - 240000
+            )
+        )
+        
+        // 2. Comprimir nueva pregunta a JSON
+        val inputJson = chatbotService.compressToInputJson(
+            userId = "user_12345",
+            userMessage = "Mi glucosa está en 200, ¿qué hago?",
+            chatMessages = initialMessages,
+            glucoseLevel = 200,
+            lastMeal = "Hace 2 horas",
+            medicationTaken = false
+        )
+        
+        // 3. Generar respuesta simulada
+        val responseJson = chatbotService.generateSimulatedResponse(
+            userMessage = "Mi glucosa está en 200, ¿qué hago?",
+            glucoseLevel = 200
+        )
+        
+        // 4. Parsear respuesta
+        val chatbotOutput = chatbotService.parseChatbotResponse(responseJson)
+        
+        // 5. Extraer información útil
+        val responseMessage = chatbotService.extractResponseMessage(chatbotOutput)
+        val suggestions = chatbotService.extractSuggestions(chatbotOutput)
+        val followUpQuestions = chatbotService.extractFollowUpQuestions(chatbotOutput)
+        val hasEmergency = chatbotService.hasEmergencyAlert(chatbotOutput)
+        
+        return buildString {
+            appendLine("=== EJEMPLO DE FLUJO COMPLETO ===")
+            appendLine()
+            appendLine("1. JSON de entrada:")
+            appendLine(inputJson)
+            appendLine()
+            appendLine("2. JSON de respuesta:")
+            appendLine(responseJson)
+            appendLine()
+            appendLine("3. Información extraída:")
+            appendLine("Respuesta: $responseMessage")
+            appendLine("¿Emergencia?: $hasEmergency")
+            appendLine("Sugerencias: ${suggestions.size}")
+            suggestions.forEach { suggestion ->
+                appendLine("  - ${suggestion.type}: ${suggestion.message} (${suggestion.priority})")
+            }
+            appendLine("Preguntas de seguimiento: ${followUpQuestions.size}")
+            followUpQuestions.forEach { question ->
+                appendLine("  - $question")
+            }
+        }
+    }
+}
+
+/**
+ * Función de ejemplo para usar en la aplicación
+ */
+fun demonstrateChatbotJsonUsage(): String {
+    val example = ChatbotJsonExample()
+    return example.exampleCompleteFlow()
+}

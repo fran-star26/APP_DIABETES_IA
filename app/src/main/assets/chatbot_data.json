@@ -1,0 +1,30 @@
+{
+  "common_questions": [
+    {
+      "question": "¿Qué es la diabetes tipo 2?",
+      "answer": "La diabetes tipo 2 es una condición en la que el cuerpo no usa la insulina adecuadamente, lo que lleva a niveles altos de azúcar en la sangre.",
+      "intent": "faq_diabetes_tipo_2"
+    },
+    {
+      "question": "¿Qué alimentos debo evitar?",
+      "answer": "Generalmente, es bueno evitar bebidas azucaradas, dulces, pan blanco y alimentos muy procesados.",
+      "intent": "faq_alimentos_evitar"
+    },
+    {
+      "question": "¿Cuánta agua debo tomar?",
+      "answer": "Se recomienda beber al menos 8 vasos (unos 2 litros) de agua al día para mantenerse bien hidratado.",
+      "intent": "faq_agua"
+    }
+  ],
+  "glucose_responses": {
+    "high_alert": "Tu nivel de glucosa está muy alto. Por favor, revisa si administraste tu insulina. Si te sientes mal, contacta a tu médico.",
+    "low_alert": "Tu nivel de glucosa está muy bajo. Por favor, consume 15g de carbohidratos rápidos, como un jugo o dulces, y mide tu glucosa de nuevo en 15 minutos."
+  },
+  "health_tips": [
+    "Recuerda caminar al menos 30 minutos hoy.",
+    "No olvides beber suficiente agua.",
+    "Revisa tus pies buscando heridas o ampollas.",
+    "Intenta dormir al menos 7 u 8 horas esta noche.",
+    "Añadir vegetales a cada comida es una gran idea."
+  ]
+}
