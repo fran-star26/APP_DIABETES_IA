@@ -72,11 +72,11 @@ GOOGLE_API_KEY="AIzaSyTuClaveDeGoogleAqui"
 ```
 
 ### 3. Ejecutar el Proyecto
--Sincroniza Gradle en Android Studio (Sync Now).
--Selecciona tu emulador o dispositivo físico y presiona Run (Shift + F10).
--Asegúrate de levantar el servidor de FastAPI en tu terminal: uvicorn main:app --host 0.0.0.0 --port 8000.
+- Sincroniza Gradle en Android Studio (Sync Now).
+- Selecciona tu emulador o dispositivo físico y presiona Run (Shift + F10).
+- Asegúrate de levantar el servidor de FastAPI en tu terminal: uvicorn main:app --host 0.0.0.0 --port 8000.
 
-🏗️ Estructura del Proyecto (Android)
+## 🏗️ Estructura del Proyecto (Android)
 ```bash
 app/src/main/java/com/proyectoing/glocosasmarai/
 ├── chatbot/          # Lógica de integración con la IA y estructuración de JSONs
@@ -90,18 +90,18 @@ app/src/main/java/com/proyectoing/glocosasmarai/
 ```
 
 ## 🔧 Solución de Problemas Frecuentes
--Error 500 al consultar a la IA: Verifica que tu archivo .env exista en el backend, que la API Key sea válida y que tu proyecto de Google Cloud no tenga restricciones de cuota o facturación.
--La app no se conecta al servidor: Si pruebas en un dispositivo físico, asegúrate de que tu celular y tu computadora estén en la misma red Wi-Fi y que hayas puesto la IPv4 correcta en local.properties.
--Error de compilación con iText7: Asegúrate de que tu minSdk esté fijado en 26 dentro de app/build.gradle.kts y limpia el proyecto (Build -> Clean Project).
+- Error 500 al consultar a la IA: Verifica que tu archivo .env exista en el backend, que la API Key sea válida y que tu proyecto de Google Cloud no tenga restricciones de cuota o facturación.
+- La app no se conecta al servidor: Si pruebas en un dispositivo físico, asegúrate de que tu celular y tu computadora estén en la misma red Wi-Fi y que hayas puesto la IPv4 correcta en local.properties.
+- Error de compilación con iText7: Asegúrate de que tu minSdk esté fijado en 26 dentro de app/build.gradle.kts y limpia el proyecto (Build -> Clean Project).
 
 ## 🤝 Contribuciones
 Este proyecto nació como un trabajo de tesis de ingeniería. ¡Las sugerencias y mejoras son bienvenidas!
 
-1-Haz un Fork del repositorio.
-2-Crea una rama para tu función (git checkout -b feature/NuevaFuncion).
-3-Sube tus cambios (git commit -m 'Añadir NuevaFuncion').
-4-Haz push a tu rama (git push origin feature/NuevaFuncion).
-5-Abre un Pull Request.
+1- Haz un Fork del repositorio.
+2- Crea una rama para tu función (git checkout -b feature/NuevaFuncion).
+3- Sube tus cambios (git commit -m 'Añadir NuevaFuncion').
+4- Haz push a tu rama (git push origin feature/NuevaFuncion).
+5- Abre un Pull Request.
 
 ## 📜 Licencia
 Este proyecto está bajo la Licencia MIT. Consulta el archivo LICENSE para más detalles.
