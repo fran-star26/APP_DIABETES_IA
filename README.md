@@ -12,6 +12,25 @@
 
 **GlucosaSmart IA** es una aplicación móvil nativa desarrollada para Android que ayuda a los pacientes con diabetes a tomar el control de su salud. Combina un registro detallado de métricas médicas con el poder de un asistente virtual impulsado por inteligencia artificial (Google Gemini), capaz de analizar información nutricional y ofrecer recomendaciones personalizadas.
 
+<div align="center">
+  <table>
+    <tr>
+      <td align="center">
+        <img src="screenshots/pantalla_principal.png" width="220"/><br>
+        <b>Principal</b>
+      </td>
+      <td align="center">
+        <img src="screenshots/chat_gemini.png" width="220"/><br>
+        <b>Chat IA</b>
+      </td>
+      <td align="center">
+        <img src="screenshots/reporte.png" width="220"/><br>
+        <b>Reportes PDF</b>
+      </td>
+    </tr>
+  </table>
+</div>
+
 ---
 
 ## ✨ Características Principales
