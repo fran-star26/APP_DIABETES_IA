@@ -97,11 +97,11 @@ app/src/main/java/com/proyectoing/glocosasmarai/
 ## 🤝 Contribuciones
 Este proyecto nació como un trabajo de tesis de ingeniería. ¡Las sugerencias y mejoras son bienvenidas!
 
-1- Haz un Fork del repositorio.
-2- Crea una rama para tu función (git checkout -b feature/NuevaFuncion).
-3- Sube tus cambios (git commit -m 'Añadir NuevaFuncion').
-4- Haz push a tu rama (git push origin feature/NuevaFuncion).
-5- Abre un Pull Request.
+1. Haz un Fork del repositorio.
+2. Crea una rama para tu función (git checkout -b feature/NuevaFuncion).
+3. Sube tus cambios (git commit -m 'Añadir NuevaFuncion').
+4. Haz push a tu rama (git push origin feature/NuevaFuncion).
+5. Abre un Pull Request.
 
 ## 📜 Licencia
 Este proyecto está bajo la Licencia MIT. Consulta el archivo LICENSE para más detalles.
