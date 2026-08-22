@@ -22,56 +22,56 @@
       </td>
       <td align="center">
         <img src="screenshots/Pantalla-principal1.png" width="200"/><br>
-        <b>Principal 1</b>
+        <b>Chatbot Asistente con IA</b>
       </td>
       <td align="center">
         <img src="screenshots/Pantalla-principal2.png" width="200"/><br>
-        <b>Principal 2</b>
+        <b>Pantalla Principal</b>
       </td>
     </tr>
     <!-- Fila 2 -->
     <tr>
       <td align="center">
         <img src="screenshots/pantalla-comida1.jpg" width="200"/><br>
-        <b>Comida 1</b>
+        <b>Registros de Comida</b>
       </td>
       <td align="center">
         <img src="screenshots/pantalla-comida2.jpg" width="200"/><br>
-        <b>Comida 2</b>
+        <b>Registros de Comida guardados</b>
       </td>
       <td align="center">
         <img src="screenshots/Pantalla-glucosa1.jpg" width="200"/><br>
-        <b>Glucosa 1</b>
+        <b>Registros de Glucosa</b>
       </td>
     </tr>
     <!-- Fila 3 -->
     <tr>
       <td align="center">
         <img src="screenshots/Pantalla-glucosa2.jpg" width="200"/><br>
-        <b>Glucosa 2</b>
+        <b>Registros de Glucosa guardados</b>
       </td>
       <td align="center">
         <img src="screenshots/Pantalla-medicamentos1.png" width="200"/><br>
-        <b>Medicamentos 1</b>
+        <b>Registros de Medicamentos</b>
       </td>
       <td align="center">
         <img src="screenshots/Pantalla-medicamentos2.png" width="200"/><br>
-        <b>Medicamentos 2</b>
+        <b>Recordatorios proximos</b>
       </td>
     </tr>
     <!-- Fila 4 -->
     <tr>
       <td align="center">
         <img src="screenshots/Pantalla-configuraciones1.jpg" width="200"/><br>
-        <b>Configuraciones 1</b>
+        <b>Configuraciones</b>
       </td>
       <td align="center">
         <img src="screenshots/Pantalla-configuraciones2.jpg" width="200"/><br>
-        <b>Configuraciones 2</b>
+        <b>Recordatorio de comidas</b>
       </td>
       <td align="center">
         <img src="screenshots/Pantalla-configuraciones3.jpg" width="200"/><br>
-        <b>Configuraciones 3</b>
+        <b>Reportes Mensuales</b>
       </td>
     </tr>
     <!-- Fila 5 (Última imagen centrada o sola) -->
