@@ -89,12 +89,12 @@ app/src/main/java/com/proyectoing/glocosasmarai/
 └── MainActivity.kt   # Punto de entrada de la app
 ```
 
-🔧 Solución de Problemas Frecuentes
+## 🔧 Solución de Problemas Frecuentes
 -Error 500 al consultar a la IA: Verifica que tu archivo .env exista en el backend, que la API Key sea válida y que tu proyecto de Google Cloud no tenga restricciones de cuota o facturación.
 -La app no se conecta al servidor: Si pruebas en un dispositivo físico, asegúrate de que tu celular y tu computadora estén en la misma red Wi-Fi y que hayas puesto la IPv4 correcta en local.properties.
 -Error de compilación con iText7: Asegúrate de que tu minSdk esté fijado en 26 dentro de app/build.gradle.kts y limpia el proyecto (Build -> Clean Project).
 
-🤝 Contribuciones
+## 🤝 Contribuciones
 Este proyecto nació como un trabajo de tesis de ingeniería. ¡Las sugerencias y mejoras son bienvenidas!
 
 1-Haz un Fork del repositorio.
@@ -103,5 +103,5 @@ Este proyecto nació como un trabajo de tesis de ingeniería. ¡Las sugerencias 
 4-Haz push a tu rama (git push origin feature/NuevaFuncion).
 5-Abre un Pull Request.
 
-📜 Licencia
+## 📜 Licencia
 Este proyecto está bajo la Licencia MIT. Consulta el archivo LICENSE para más detalles.
