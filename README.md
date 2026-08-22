@@ -56,3 +56,47 @@ Este proyecto está dividido en dos capas principales:
 ```bash
 git clone [https://github.com/fran-star26/APP_DIABETES_IA.git](https://github.com/fran-star26/APP_DIABETES_IA.git)
 cd APP_DIABETES_IA
+
+2. Configurar Variables de Entorno (Crucial)
+Por seguridad, las claves de las APIs no están incluidas en este repositorio. Debes configurar tus propias credenciales localmente:
+
+En Android Studio:
+Abre el archivo local.properties (créalo en la raíz si no existe) y agrega la ruta a tu servidor backend local:
+BACKEND_URL="http://TU_IP_LOCAL:8000"
+
+En el Backend (FastAPI):
+Crea un archivo .env en la raíz de tu servidor Python e inserta tu clave de Gemini:
+GOOGLE_API_KEY="AIzaSyTuClaveDeGoogleAqui"
+
+3. Ejecutar el Proyecto
+-Sincroniza Gradle en Android Studio (Sync Now).
+-Selecciona tu emulador o dispositivo físico y presiona Run (Shift + F10).
+-Asegúrate de levantar el servidor de FastAPI en tu terminal: uvicorn main:app --host 0.0.0.0 --port 8000.
+
+🏗️ Estructura del Proyecto (Android)
+app/src/main/java/com/proyectoing/glocosasmarai/
+├── chatbot/          # Lógica de integración con la IA y estructuración de JSONs
+├── config/           # Lectura de variables seguras desde BuildConfig
+├── database/         # Entidades de Room y DAOs
+├── models/           # Clases de datos (Glucosa, Comida, Perfil, etc.)
+├── services/         # Generación de PDFs (iText7), Autenticación, Drive Backup y red (OkHttp)
+├── ui/               # Pantallas construidas 100% en Jetpack Compose
+├── workers/          # Tareas en segundo plano (Recordatorios de medicación y comidas)
+└── MainActivity.kt   # Punto de entrada de la app
+
+🔧 Solución de Problemas Frecuentes
+-Error 500 al consultar a la IA: Verifica que tu archivo .env exista en el backend, que la API Key sea válida y que tu proyecto de Google Cloud no tenga restricciones de cuota o facturación.
+-La app no se conecta al servidor: Si pruebas en un dispositivo físico, asegúrate de que tu celular y tu computadora estén en la misma red Wi-Fi y que hayas puesto la IPv4 correcta en local.properties.
+-Error de compilación con iText7: Asegúrate de que tu minSdk esté fijado en 26 dentro de app/build.gradle.kts y limpia el proyecto (Build -> Clean Project).
+
+🤝 Contribuciones
+Este proyecto nació como un trabajo de tesis de ingeniería. ¡Las sugerencias y mejoras son bienvenidas!
+
+1-Haz un Fork del repositorio.
+2-Crea una rama para tu función (git checkout -b feature/NuevaFuncion).
+3-Sube tus cambios (git commit -m 'Añadir NuevaFuncion').
+4-Haz push a tu rama (git push origin feature/NuevaFuncion).
+5-Abre un Pull Request.
+
+📜 Licencia
+Este proyecto está bajo la Licencia MIT. Consulta el archivo LICENSE para más detalles.
